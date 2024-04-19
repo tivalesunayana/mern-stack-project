@@ -1,7 +1,23 @@
-export default function App() {
-  return (
-    <h1 className="text-red-500">
-      Hello world!
-    </h1>
+import {BrowserRouter , Routes,Route} from 'react-router-dom'
+import Home from './pages/Home'
+import About from './pages/About'
+import SignIn from './pages/SignIn'
+import SignUp from './pages/SignUp'
+import Profile from './pages/Profile'
+
+export default function App(){
+  return(
+
+    <BrowserRouter>
+  <Routes>
+  <Route path='/' element={<Home />} />
+  <Route path='/about' element={<About/>} />
+  <Route path='/sign-in' element={<SignIn/>} />
+  <Route path='/Sign-up' element={<SignUp/>} />
+  <Route path='/profile' element={<Profile/>} />
+  <Route path='/' element={Home} />
+  </Routes>
+    </BrowserRouter>
   )
+ 
 }
