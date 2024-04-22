@@ -13,7 +13,7 @@ export default function Header() {
                 <Link to='/about'><li>About</li></Link>
                 <Link to='/profile'><li>Profile</li></Link>
 
-                <Link to='/sign-in'><li>SignIn</li></Link>
+                <Link to='/sign-up'><li>SignUp</li></Link>
 
             </ul>
             </div>
