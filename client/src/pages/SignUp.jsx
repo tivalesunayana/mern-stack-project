@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 export default function SignUp() {
   const [formData, setFormData] = useState({});
   const [loading, setLoading] = useState(false);
@@ -7,6 +7,7 @@ export default function SignUp() {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -28,6 +29,7 @@ export default function SignUp() {
         setError(true);
         return;
       }
+      navigate("/sign-in");
     } catch (error) {
       setLoading(false);
       setError(true);
@@ -61,7 +63,7 @@ export default function SignUp() {
         />
         <button
           disabled={loading}
-          className="p-3 bg-red-400 rounded hover:opacity-95 disabled:opacity-80"
+          className="p-3 bg-red-500 rounded hover:opacity-95 disabled:opacity-80"
         >
           {loading ? "Loading..." : "Sign Up"}
         </button>
