@@ -10,6 +10,7 @@ export default function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      //when no data
       setLoading(true);
       setError(false);
 
@@ -21,6 +22,7 @@ export default function SignUp() {
         body: JSON.stringify(formData),
       });
       const data = await res.json();
+      //got the data
       setLoading(false);
       if (data.success === false) {
         setError(true);
@@ -39,14 +41,14 @@ export default function SignUp() {
           type="text"
           placeholder="username"
           id="username"
-          className="bg-red-300 rounded p-3 text-black "
+          className="bg-slate-100 rounded p-3 text-black "
           onChange={handleChange}
         />
         <input
           type="email"
           placeholder="email"
           id="email"
-          className="bg-red-300 rounded p-3"
+          className="bg-slate-100 rounded p-3"
           onChange={handleChange}
         />
 
@@ -54,12 +56,12 @@ export default function SignUp() {
           type="password"
           placeholder="password"
           id="password"
-          className="bg-red-300 rounded p-3 text-black "
+          className="bg-slate-100 rounded p-3 text-black "
           onChange={handleChange}
         />
         <button
           disabled={loading}
-          className="p-3 bg-green-400 rounded hover:opacity-95 disabled:opacity-80"
+          className="p-3 bg-red-400 rounded hover:opacity-95 disabled:opacity-80"
         >
           {loading ? "Loading..." : "Sign Up"}
         </button>
