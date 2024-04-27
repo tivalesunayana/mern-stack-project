@@ -11,6 +11,8 @@ export default function SignIn() {
   //   const [loading, setLoading] = useState(false);
   //   const [error, setError] = useState(false);
   const { loading, error } = useSelector((state) => state.user);
+  console.log(loading, error);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleChange = (e) => {
@@ -35,7 +37,7 @@ export default function SignIn() {
       if (data.success === false) {
         // setError(true);
         // return;
-        dispatch(signInFailure("Sign in failed"));
+        dispatch(signInFailure(data));
         return;
       }
       dispatch(signInSuccess(data));
@@ -43,7 +45,7 @@ export default function SignIn() {
     } catch (error) {
       //   setLoading(false);
       //   setError(false);
-      dispatch(signInFailure(error.message));
+      dispatch(signInFailure(error));
     }
   };
   return (
@@ -80,7 +82,9 @@ export default function SignIn() {
           <span className="text-sky-500">Sign Up</span>
         </Link>
       </div>
-      <p className="text-red-500">{error && "somthing went wrong"}</p>
+      <p className="text-red-500">
+        {error ? error.message || "somthing went wrong!" : ""}
+      </p>
     </div>
   );
 }
