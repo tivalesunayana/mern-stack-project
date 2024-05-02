@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 export default function Header() {
   const { currentUser } = useSelector((state) => state.user);
   return (
-    <div className="bg-sky-300">
+    <div className="bg-gray-400 ">
       <div className="flex justify-between max-w-6xl mx-auto items-center p-4">
         <Link to="/">
           <h1>Auth App</h1>
