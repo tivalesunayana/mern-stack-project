@@ -27,7 +27,6 @@ export default function About() {
           <li>Firebase</li>
           <li>Redux</li>
         </ul>
-        <p className="text-gray-500">Let's build something amazing together!</p>
       </div>
     </div>
   );

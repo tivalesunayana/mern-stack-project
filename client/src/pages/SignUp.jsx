@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import OAuth from "../components/OAuth";
+import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
+
 export default function SignUp() {
   const [formData, setFormData] = useState({});
   const [loading, setLoading] = useState(false);
@@ -9,6 +11,7 @@ export default function SignUp() {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -54,14 +57,28 @@ export default function SignUp() {
           className="bg-slate-100 rounded p-3"
           onChange={handleChange}
         />
+        <div className="relative mb-6">
+          {" "}
+          <input
+            type={showPassword ? "text" : "password"}
+            placeholder="password"
+            id="password"
+            className=" w-full bg-slate-100 rounded p-3 text-black "
+            onChange={handleChange}
+          />
+          {showPassword ? (
+            <AiFillEyeInvisible
+              onClick={() => setShowPassword((prevState) => !prevState)}
+              className="absolute right-3 top-3 text-xl cursor-pointer"
+            />
+          ) : (
+            <AiFillEye
+              onClick={() => setShowPassword((prevState) => !prevState)}
+              className="absolute right-3 top-3 text-xl cursor-pointer"
+            />
+          )}
+        </div>
 
-        <input
-          type="password"
-          placeholder="password"
-          id="password"
-          className="bg-slate-100 rounded p-3 text-black "
-          onChange={handleChange}
-        />
         <button
           disabled={loading}
           className="p-3 bg-gray-400  rounded hover:opacity-95 disabled:opacity-80"

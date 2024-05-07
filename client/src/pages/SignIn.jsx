@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
+
 import {
   signInStart,
   signInSuccess,
@@ -9,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import OAuth from "../components/OAuth";
 export default function SignIn() {
   const [formData, setFormData] = useState({});
+  const [showPassword, setShowPassword] = useState(false);
   //   const [loading, setLoading] = useState(false);
   //   const [error, setError] = useState(false);
   const { loading, error } = useSelector((state) => state.user);
@@ -50,8 +53,8 @@ export default function SignIn() {
     }
   };
   return (
-    <div className="p-4 max-w-lg mx-auto">
-      <h2 className=" text-xl font-semibold items-center text-center">
+    <div className="p-5 max-w-lg mx-auto">
+      <h2 className=" text-xl font-semibold items-center text-center my-6">
         Sign In
       </h2>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4 my-5">
@@ -63,13 +66,26 @@ export default function SignIn() {
           className="p-3 bg-slate-100"
           onChange={handleChange}
         ></input>
-        <input
-          type="password"
-          id="password"
-          placeholder="password"
-          className="p-3 bg-slate-100"
-          onChange={handleChange}
-        ></input>
+        <div className="relative mb-6">
+          <input
+            type={showPassword ? "text" : "password"}
+            id="password"
+            onChange={handleChange}
+            placeholder="password"
+            className="px-4 py-2  w-full bg-slate-100  border-gray-300 rounded transition ease-in-out"
+          />
+          {showPassword ? (
+            <AiFillEyeInvisible
+              className="absolute right-3 top-3 text-xl cursor-pointer"
+              onClick={() => setShowPassword((prevState) => !prevState)}
+            />
+          ) : (
+            <AiFillEye
+              className="absolute right-3 top-3 text-xl cursor-pointer"
+              onClick={() => setShowPassword((prevState) => !prevState)}
+            />
+          )}
+        </div>
         <button
           disabled={loading}
           className="p-3 bg-gray-400 rounded hover:opacity-95 disabled:opacity-80"

@@ -140,6 +140,7 @@ export default function Profile() {
             ""
           )}
         </p>
+
         <input
           type="text"
           placeholder="username"
