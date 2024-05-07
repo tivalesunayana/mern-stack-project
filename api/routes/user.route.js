@@ -1,10 +1,11 @@
 import express from "express";
-import {
-  test,
-  updateUser,
-  deleteUser,
-} from "../controllers/user.controller.js";
-import { verifyToken } from "../utils/verifyUser.js";
+// import {
+//   test,
+//   updateUser,
+//   deleteUser,
+// } from "../controllers/user.controller.js";
+import { verifyToken } from "../utils/verifyToken.js";
+import { deleteUser, test, updateUser } from "../controller/user.controller.js";
 
 const router = express.Router();
 

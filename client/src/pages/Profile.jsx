@@ -113,7 +113,7 @@ export default function Profile() {
       <h2 className="font-semibold text-3xl items-center my-7 text-center">
         Profile
       </h2>
-      <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input
           type="file"
           ref={fileRef}
