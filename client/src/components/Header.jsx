@@ -11,29 +11,16 @@ export default function Header() {
   return (
     <div className="bg-gray-400 ">
       <div className="flex justify-between max-w-6xl mx-auto items-center p-4">
-        <Link to="/">
+        {/* <Link to="/">
           <h1>Auth App</h1>
+        </Link> */}
+        <Link
+          to="/"
+          className={activeButton === "auth" ? "text-white" : ""}
+          onClick={() => handleButtonClick("auth")}
+        >
+          Auth App
         </Link>
-        {/* <ul className="flex gap-4">
-          <Link to="/">
-            <li>Home</li>
-          </Link>
-          <Link to="/about">
-            <li>About</li>
-          </Link>
-          <Link to="/profile">
-            {currentUser ? (
-              <img
-                src={currentUser.profilePicture}
-                alt="profile"
-                className="h-7 w-7 rounded-full object-cover"
-              />
-            ) : (
-              <li>Sign In</li>
-            )}
-          </Link>
-        </ul> */}
-
         <ul className="flex gap-4">
           <li>
             <Link
