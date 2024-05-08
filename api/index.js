@@ -4,6 +4,8 @@ import mongoose from "mongoose";
 import authRoutes from "./routes/auth.route.js";
 import userRoutes from "./routes/user.route.js";
 import cookieParser from "cookie-parser";
+//for deploy
+import path from "path";
 dotenv.config();
 
 mongoose
@@ -16,6 +18,8 @@ mongoose
   });
 
 const app = express();
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, "/client/dist"))); //deploy
 app.use(express.json());
 app.use(cookieParser());
 app.listen(3000, () => {
@@ -32,4 +36,9 @@ app.use((err, req, res, next) => {
     message,
     statuscode,
   });
+});
+
+//for deploy
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
 });

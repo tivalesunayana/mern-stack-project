@@ -26,6 +26,7 @@ export default function Profile() {
   console.log(currentUser);
   const [image, setImage] = useState(undefined);
   const [imagePercent, setImagePercent] = useState(0);
+  console.log(imagePercent);
   const [imageError, setImageError] = useState(false);
   const [formData, setFormData] = useState({});
   const [updateSuccess, setUpdateSuccess] = useState(false);
@@ -38,7 +39,7 @@ export default function Profile() {
 
   const handleFileUpload = async (image) => {
     const storage = getStorage(app);
-    const fileName = new Date().getTime + image.name;
+    const fileName = new Date().getTime() + image.name;
     const storageRef = ref(storage, fileName);
     const uploadTask = uploadBytesResumable(storageRef, image);
     uploadTask.on(
